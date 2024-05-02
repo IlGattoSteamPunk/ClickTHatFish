@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fantasy Flora Generator</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+        }
+        .container {
+            max-width: 500px;
+            margin: 100px auto;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #336699;
+        }
+        .plant-name {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #336699;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            margin-right: 10px;
+        }
+        button:hover {
+            background-color: #225588;
+        }
+        .modal-dialog {
+            max-width: 400px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center mb-4">Fantasy Flora Generator</h1>
+        <div class="plant-name text-center mb-4" id="plantName"></div>
+        <div class="text-center mb-4">
+            <button class="btn btn-primary mr-2" onclick="generaNome()">Generate Name</button>
+            <button class="btn btn-primary mr-2" onclick="copiaNome()">Copy Name</button>
+            <button class="btn btn-primary" data-toggle="modal" data-target="#myModal">Add Custom Words</button>
+            <button class="btn btn-danger ml-3" onclick="resettaParole()">Reset Custom Words</button>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Add Custom Words</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="prefissoInput">Prefix:</label>
+                        <input type="text" class="form-control mb-2" id="prefissoInput" placeholder="Enter one or more comma-separated preffixes">
+                        <label for="suffissoInput">Suffix:</label>
+                        <input type="text" class="form-control" id="suffissoInput" placeholder="Enter one or more comma-separated suffixes">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" onclick="aggiungiParole()">Add</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var prefissiBase = ["Aero", "Chrono", "Dyna", "Ether", "Flora", "Geo", "Hydro", "Luna", "Pyro", "Spectro", "Celestial", "Mystic", "Solar", "Luminous", "Twilight", "Cosmic", "Ethereal", "Galactic", "Nebula", "Radiant", "Aurora", "Solaris", "Nova", "Astral", "Lunar", "Sapphire", "Ruby", "Emerald", "Topaz", "Amethyst", "Diamond", "Opal", "Sapphire", "Crimson", "Azure", "Golden", "Silver", "Jade", "Crystal", "Moonlit", "Starlight", "Borealis", "Enchanted", "Divine", "Whispering", "Serenity", "Tranquil", "Harmony", "Peaceful", "Sylvan", "Verdant", "Blossom", "Mystical", "Dream", "Whisper", "Star", "Moon", "Sun", "Flame", "Aqua", "Frost", "Dawn", "Dusk", "Shimmer", "Glow", "Glimmer", "Gleam", "Radiance", "Sparkle", "Shine", "Crest", "Vapor", "Aura", "Tide", "Torrent", "Cascade", "Frost", "Grove", "Zephyr", "Solstice", "Echo", "Serenade", "Cascade", "Abyss", "Oasis", "Mirage", "Tempest", "Bramble", "Sage", "Fern", "Dew", "Mist", "Glimpse"];
+        var suffissiBase = ["bloom", "leaf", "petal", "blossom", "vine", "thorn", "sprout", "bud", "root", "stalk", "whisper", "shimmer", "glimmer", "echo", "song", "breeze", "glade", "haven", "crest", "ray", "glow", "stream", "drift", "cascade", "shard", "veil", "haze", "shard", "flame", "wind", "song", "silk", "dusk", "dawn", "tide", "stone", "rain", "dew", "mist", "shade", "frost", "crystal", "peak", "hollow", "gleam", "gaze", "glen", "grove", "reach", "peak", "shade", "star", "leaf", "whisper", "bloom", "petal", "vine", "thorn", "sprout", "bud", "root", "stalk", "breeze", "ray", "beam", "mist", "haze", "cascade", "ripple", "twinkle", "sprinkle", "glint", "glimpse", "glimmer", "shimmer", "shimmer", "dazzle", "twilight", "spark", "sparkle", "glisten", "glisten", "shine", "luster"];
+
+        var prefissi = prefissiBase.slice();
+        var suffissi = suffissiBase.slice();
+
+        function generaNome() {
+            var prefisso = prefissi[Math.floor(Math.random() * prefissi.length)];
+            var suffisso = suffissi[Math.floor(Math.random() * suffissi.length)];
+            var nomePianta = prefisso + suffisso;
+            document.getElementById("plantName").textContent = nomePianta;
+        }
+
+        function copiaNome() {
+            var nomePianta = document.getElementById("plantName").textContent;
+            navigator.clipboard.writeText(nomePianta)
+                .then(() => {
+                    alert("Copied To Clipboard!");
+                })
+                .catch(err => {
+                    console.error('Error:', err);
+                });
+        }
+
+        function aggiungiParole() {
+            var prefissoInput = document.getElementById("prefissoInput").value.trim();
+            var suffissoInput = document.getElementById("suffissoInput").value.trim();
+
+            if (prefissoInput !== "") {
+                prefissi = prefissi.concat(prefissoInput.split(",").map(item => item.trim()));
+            }
+
+            if (suffissoInput !== "") {
+                suffissi = suffissi.concat(suffissoInput.split(",").map(item => item.trim()));
+            }
+
+            alert("The Words has Been Added!");
+            $('#myModal').modal('hide');
+        }
+
+        function resettaParole() {
+            prefissi = prefissiBase.slice();
+            suffissi = suffissiBase.slice();
+            alert("Custom Words Reseted!");
+        }
+    </script>
+    <!-- Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
