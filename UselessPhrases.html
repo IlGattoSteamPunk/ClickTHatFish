@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Useless Phrase Generator</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #74ebd5, #ACB6E5);
+            margin: 0;
+        }
+        .container {
+            text-align: center;
+            background-color: white;
+            padding: 40px 20px;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+            max-width: 500px;
+            width: 90%;
+        }
+        #quote {
+            font-size: 1.5em;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        button {
+            padding: 15px 30px;
+            font-size: 1.2em;
+            cursor: pointer;
+            border: none;
+            border-radius: 25px;
+            background-color: #007BFF;
+            color: white;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="quote">Click the button for a useless phrase!</div>
+        <button onclick="generateQuote()">Generate Phrase</button>
+    </div>
+
+    <script>
+        const quotes = [
+            "The dog jumped to the moon for a cheese pizza.",
+            "Bananas dance better in a blue sombrero.",
+            "A pink unicorn stole my coffee machine.",
+            "When it rains donuts, cats wear rubber boots.",
+            "My refrigerator speaks six languages, but only at night.",
+            "Ants play chess when no one is watching.",
+            "The wind blows harder on barbecue sauce days.",
+            "A rainbow asked a purple cloud for an autograph.",
+            "Chickens sing opera during the autumn equinox.",
+            "Clouds are made of cotton candy in fish dreams.",
+            "The carrot train departs every Thursday at five.",
+            "Peacocks play soccer on odd days in December.",
+            "A toast with jam drives better than a pineapple.",
+            "Elephants use Wi-Fi in cotton candy forests.",
+            "Giraffes have the best chocolate cake recipes.",
+            "Kangaroos jump on clouds when they are happy.",
+            "Pandas eat sushi only during rock concerts.",
+            "Zebras play hide and seek with rainbow colors.",
+            "Mountains laugh when crickets tell jokes.",
+            "The sun wears sunglasses when on vacation.",
+            "Dolphins write poetry on the ocean waves.",
+            "Stars dance the tango on full moon nights.",
+            "Flowers talk to butterflies about world politics.",
+            "Beavers build bridges only for their fish friends.",
+            "Bees organize jazz concerts in flowering meadows.",
+            "Turtles always win gourmet cooking competitions.",
+            "Owls read mystery novels on rainy afternoons.",
+            "Fireflies give motivational speeches to young trees.",
+            "Penguins hold fashion shows at the South Pole.",
+            "Polar bears write adventure stories in the ice.",
+            "Whales sing lullabies to the little fish in the sea.",
+            "Rabbits grow giant carrots in secret gardens.",
+            "Foxes paint abstract paintings on starry nights.",
+            "Horses dream of flying with butterfly wings.",
+            "Ninja turtles take yoga classes.",
+            "Dragons have breakfast with strawberry pancakes.",
+            "Starfish dance the samba on summer nights.",
+            "Chameleons change color when listening to jazz.",
+            "Ladybugs bring luck to cats in dreams.",
+            "Frogs sing in chorus on new moon nights."
+        ];
+
+        function generateQuote() {
+            const randomIndex = Math.floor(Math.random() * quotes.length);
+            document.getElementById('quote').textContent = quotes[randomIndex];
+        }
+    </script>
+</body>
+</html>
