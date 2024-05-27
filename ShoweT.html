@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shower Thoughts Generator</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #74ebd5, #ACB6E5);
+            margin: 0;
+        }
+        .container {
+            text-align: center;
+            background-color: white;
+            padding: 40px 20px;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+            max-width: 600px;
+            width: 90%;
+        }
+        #thought {
+            font-size: 1.3em;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        button {
+            padding: 15px 30px;
+            font-size: 1.2em;
+            cursor: pointer;
+            border: none;
+            border-radius: 25px;
+            background-color: #007BFF;
+            color: white;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="thought">Click the button for a Shower Thought!</div>
+        <button onclick="generateThought()">Generate Thought</button>
+    </div>
+
+    <script>
+        const thoughts = [
+            "We laugh at dogs getting excited when they hear a bark on TV, but if TV was a nonstop stream of unintelligible noises and then someone suddenly spoke to you in your language, you'd be pretty startled too.",
+            "11 babies have been born in Antarctica, and none of them died as infants, meaning Antarctica has the lowest infant mortality rate at 0%.",
+            "Somebody at Google was just like 'yea, just have someone drive down every road on fucking earth'.",
+            "“Go to bed, you'll feel better in the morning” is the human version of “Did you turn it off and turn it back on again?”",
+            "Even when a balloon is half inflated, it is completely full.",
+            "It won't be long before people use 'the '20s, the '30s, and the '40s' to describe the 2020s, the 2030s, and the 2040s.",
+            "I wonder how many slices of pizza I've eaten in my lifetime.",
+            "Does a straw have one hole, or two?",
+            "Millions of people are doing the exact same thing as you are right now.",
+            "At one point in your life, you were exactly pi years old.",
+            "Nothing is on fire. Fire is on things.",
+            "How do our brains remember that we forgot something, but we can't remember what that thing was?",
+            "If James Bond is the most famous spy, wouldn't that also make him the worst spy?",
+            "Someone dreamt about you last night and you have no idea.",
+            "Peer pressure as an adult is seeing your neighbor mow their lawn.",
+            "Crabs probably think that fish can fly.",
+            "Your first birthday is technically your second birthday.",
+            "I wonder what my dog named me.",
+            "Fire trucks are really water trucks.",
+            "Bean bags are just boneless sofas.",
+            "When we're young, we sneak out of our houses to go to parties. When we're old, we sneak out of parties to go home.",
+            "If they mounted garbage trucks with cameras, you could update Google Maps street view every week.",
+            "Can you daydream at night?",
+            "Math is the only place where someone would buy 60 watermelons and 40 cantaloupes, and no one asks any questions.",
+            "Your stomach thinks all potatoes are mashed.",
+            "In order to fall asleep, we have to pretend to be asleep.",
+            "Someone's mom probably used you as a bad example for her kids.",
+            "If Earth was flat, the edge would probably be a tourist attraction.",
+            "When my dog brings me the same toy, I wonder if it's his favorite toy or if he thinks it is my favorite toy.",
+            "I wish I could increase my skill levels as easily as they can in The Sims.",
+            "Only one sock goes missing because if both did, you wouldn't notice.",
+            "I correct autocorrect more than it corrects me.",
+            "Painkillers are the 'Mute Notification' option for the body."
+        ];
+
+        function generateThought() {
+            const randomIndex = Math.floor(Math.random() * thoughts.length);
+            document.getElementById('thought').textContent = thoughts[randomIndex];
+        }
+    </script>
+</body>
+</html>
